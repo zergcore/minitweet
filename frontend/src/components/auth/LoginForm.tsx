@@ -1,19 +1,17 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { AuthContext } from "../../context/AuthContext";
 import { AxiosError } from "axios";
 import { LoginData, LoginResponse } from "./types";
+import { login } from "../../services/authService";
 
 const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
+  const [formData, setFormData] = useState<LoginData>({
+    email: "",
     password: "",
   });
   const [error, setError] = useState("");
-  const context = useContext(AuthContext);
-  const login = context?.login;
   const navigate = useNavigate();
 
   const loginMutation = useMutation<
@@ -49,11 +47,11 @@ const LoginForm = () => {
       {error && <Alert variant="danger">{error}</Alert>}
 
       <Form.Group className="mb-3">
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Email</Form.Label>
         <Form.Control
           type="text"
-          name="username"
-          value={formData.username}
+          name="email"
+          value={formData.email}
           onChange={handleChange}
           required
         />

@@ -5,19 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { AuthContext } from "../../context/AuthContext";
 import { register } from "../../services/authService";
 import { AxiosError } from "axios";
-
-interface RegisterData {
-  username: string;
-  email: string;
-  password: string;
-}
-
-interface RegisterResponse {
-  id: number;
-  username: string;
-  email: string;
-  token: string;
-}
+import { RegisterData, RegisterResponse } from "./types";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({

@@ -6,8 +6,21 @@ interface LoginResponse {
 }
 
 interface LoginData {
-  username: string;
+  email: string;
   password: string;
 }
 
-export type { LoginResponse, LoginData };
+interface RegisterData {
+  username: string;
+  email: string;
+  password: string;
+}
+
+interface RegisterResponse {
+  id: number;
+  username: string;
+  email: string;
+  token: string;
+}
+
+export type { LoginResponse, LoginData, RegisterData, RegisterResponse };

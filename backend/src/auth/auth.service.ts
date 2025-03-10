@@ -66,17 +66,15 @@ export class AuthService {
   }
 
   async login(loginDto: LoginDto): Promise<AuthResponseDto> {
-    const { username, password } = loginDto;
+    const { email, password } = loginDto;
 
     // Find user
     const user = await this.userModel.findOne({
       where: {
-        username,
+        email,
       },
       attributes: ['id', 'username', 'email', 'password', 'isActive'],
     });
-
-    console.log('Usuario encontrado:', user?.toJSON());
 
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
