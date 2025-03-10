@@ -22,13 +22,17 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/profile/:username" element={<ProfilePage />} />
-          </Routes>
+          <div className="app-container">
+            <Navbar />
+            <div className="main-content">
+              <Routes>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/profile/:username" element={<ProfilePage />} />
+              </Routes>
+            </div>
+          </div>
         </Router>
       </AuthProvider>
     </QueryClientProvider>

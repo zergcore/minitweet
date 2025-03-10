@@ -38,7 +38,7 @@ const TweetList = () => {
   }
 
   return (
-    <div>
+    <div className="tweet-list-container">
       {tweets.map((tweet) => (
         <TweetItem key={tweet.id} tweet={tweet} />
       ))}

@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #0f1419; /* X text color */
+  background-color: #ffffff; /* X background color */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,19 +15,52 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #1d9bf0; /* X link color */
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #1a8cd8; /* X link hover color */
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction: column;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url("https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png"); /* X background image */
+  background-size: cover;
+  background-position: center;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tweet-list-container {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -42,27 +75,28 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #1d9bf0; /* X button color */
+  color: #ffffff; /* X button text color */
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #1a8cd8; /* X button hover color */
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #e7e9ea;
+    background-color: #15202b; /* X dark mode background color */
   }
   a:hover {
-    color: #747bff;
+    color: #1d9bf0;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #1d9bf0;
   }
 }

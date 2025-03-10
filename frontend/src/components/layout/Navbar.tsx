@@ -16,7 +16,13 @@ const NavbarComponent = () => {
     navigate("/login");
   };
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" sticky="top">
+    <Navbar
+      bg="primary"
+      variant="dark"
+      expand="lg"
+      sticky="top"
+      className="w-100"
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           <FaTwitter /> MiniTweet
