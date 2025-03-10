@@ -9,4 +9,15 @@ interface LoginCredentials {
   password: string;
 }
 
-export type { RegisterData, LoginCredentials };
+interface Tweet {
+  id: string;
+  content: string;
+  userId: string;
+  user: {
+    username: string;
+    id: string;
+  };
+  createdAt: string;
+}
+
+export type { RegisterData, LoginCredentials, Tweet };
