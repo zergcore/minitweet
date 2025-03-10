@@ -46,6 +46,7 @@ export class TweetsController {
     @GetUser() user: User,
     @Body() updateTweetDto: CreateTweetDto,
   ) {
+    console.log(updateTweetDto);
     return this.tweetsService.update(id, user.id, updateTweetDto);
   }
 

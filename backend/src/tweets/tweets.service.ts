@@ -72,24 +72,27 @@ export class TweetsService {
     userId: string,
     updateTweetDto: CreateTweetDto,
   ): Promise<Tweet> {
-    const tweet = await this.findOne(id);
+    const tweet = JSON.parse(JSON.stringify(await this.findOne(id)));
 
     if (tweet.userId !== userId) {
       throw new NotFoundException('Tweet not found or unauthorized');
     }
 
-    await tweet.update(updateTweetDto);
+    await this.tweetModel.update(
+      { content: updateTweetDto.content },
+      { where: { id } },
+    );
 
     return this.findOne(id);
   }
 
   async remove(id: string, userId: string): Promise<void> {
-    const tweet = await this.findOne(id);
+    const tweet = JSON.parse(JSON.stringify(await this.findOne(id)));
 
     if (tweet.userId !== userId) {
       throw new NotFoundException('Tweet not found or unauthorized');
     }
 
-    await tweet.destroy();
+    await this.tweetModel.destroy({ where: { id } });
   }
 }

@@ -2,7 +2,7 @@ import api from "./api";
 import { Tweet } from "./types";
 
 export const getAllTweets = async (): Promise<Tweet[]> => {
-  const response = await axios.get<Tweet[]>("/tweets");
+  const response = await api.get<Tweet[]>("/tweets");
   return response.data;
 };
 
@@ -14,7 +14,7 @@ export const getUserTweets = async (userId: string): Promise<Tweet[]> => {
 export const createTweet = async (tweetData: {
   content: string;
 }): Promise<Tweet> => {
-  const response = await axios.post<Tweet>("/tweets", tweetData);
+  const response = await api.post<Tweet>("/tweets", tweetData);
   return response.data;
 };
 
@@ -22,7 +22,7 @@ export const updateTweet = async (
   id: string,
   tweetData: { content: string }
 ): Promise<Tweet> => {
-  const response = await axios.put<Tweet>(`/tweets/${id}`, tweetData);
+  const response = await api.put<Tweet>(`/tweets/${id}`, tweetData);
   return response.data;
 };
 
