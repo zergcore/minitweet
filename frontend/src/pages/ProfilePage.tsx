@@ -8,6 +8,7 @@ import { AuthContext } from "../context/AuthContext";
 import { UserProfileData } from "../services/types";
 import ProfileHeader from "../components/users/ProfileHeader";
 import UserTweets from "../components/users/UserTweets";
+import { getUserTweets } from "../services/tweetService";
 
 const ProfilePage = () => {
   const { username } = useParams();
@@ -21,7 +22,7 @@ const ProfilePage = () => {
     error,
   } = useQuery<UserProfileData, Error>({
     queryKey: ["userProfile", username],
-    queryFn: () => {
+    queryFn: (): Promise<UserProfileData> => {
       if (!username) throw new Error("Username is required");
       return getUserProfile(username);
     },
@@ -29,7 +30,7 @@ const ProfilePage = () => {
 
   const { data: tweets } = useQuery({
     queryKey: ["userTweets", profile?.id],
-    queryFn: () => profile?.id && getUserTweets(profile.id),
+    queryFn: () => (profile?.id ? getUserTweets(profile.id) : undefined),
     enabled: !!profile?.id,
   });
 

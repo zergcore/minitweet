@@ -21,6 +21,7 @@ interface Tweet {
 }
 
 interface UserProfileData {
+  id?: string;
   username?: string;
   email?: string;
   bio?: string;

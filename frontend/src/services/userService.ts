@@ -1,9 +1,15 @@
 import api from "./api";
 import { UserProfileData } from "./types";
 
-export const getUserProfile = async (username: string) => {
-  const response = await api.get(`/users/profile/${username}`);
-  return response.data;
+export const getUserProfile = async (
+  username: string
+): Promise<UserProfileData> => {
+  const response = await fetch(`/api/users/${username}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch user profile");
+  }
+  const data: UserProfileData = await response.json();
+  return data;
 };
 
 export const updateUserProfile = async (
