@@ -20,4 +20,10 @@ interface Tweet {
   createdAt: string;
 }
 
-export type { RegisterData, LoginCredentials, Tweet };
+interface UserProfileData {
+  username?: string;
+  email?: string;
+  bio?: string;
+}
+
+export type { RegisterData, LoginCredentials, Tweet, UserProfileData };
